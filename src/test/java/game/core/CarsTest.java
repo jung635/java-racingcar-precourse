@@ -2,8 +2,13 @@ package game.core;
 
 import game.core.Cars;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
+
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 public class CarsTest {
@@ -49,7 +54,7 @@ public class CarsTest {
     void isValidMovingForward_ShouldBe4to9_true(int inputPosition) {
         Cars car = new Cars("myCar");
         car.move(inputPosition);
-        assertThat(car.getPosition() == (inputPosition)).isTrue();
+        assertThat(car.getPosition() == 1).isTrue();
     }
 
     @ParameterizedTest
@@ -59,6 +64,33 @@ public class CarsTest {
         Cars car = new Cars("myCar");
         car.move(inputPosition);
         assertThat(car.getPosition() == 0).isTrue();
+    }
+
+    @Test
+    @DisplayName("자동차 경기 상태 확인_전진")
+    void checkStatusOfMovingCar_ShouldBeForward() {
+        Cars car = new Cars("myCar");
+        StringBuilder resultMessageBuilder = new StringBuilder();
+        resultMessageBuilder.append("myCar" + ":");
+
+        for(int i=4; i<=9; i++) {
+            car.move(i);
+            resultMessageBuilder.append("-");
+            assertThat(car.toString()).isEqualTo(resultMessageBuilder.toString());
+        }
+    }
+
+    @Test
+    @DisplayName("자동차 경기 상태 확인_멈춤")
+    void checkStatusOfMovingCar_ShouldBeStop() {
+        Cars car = new Cars("myCar");
+        StringBuilder resultMessageBuilder = new StringBuilder();
+        resultMessageBuilder.append("myCar" + ":");
+
+        for(int i=0; i<4 ; i++) {
+            car.move(i);
+            assertThat(car.toString()).isEqualTo(resultMessageBuilder.toString());
+        }
     }
 }
 

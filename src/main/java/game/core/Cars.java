@@ -26,7 +26,7 @@ public class Cars {
     public void move(int inputPostion){
         carsValidator.isValidInputPostionRange(inputPostion);
         if(isForward(inputPostion)) {
-            this.position += inputPostion;
+            this.position ++;
         }
     }
 
@@ -34,4 +34,13 @@ public class Cars {
         return randomNumber >= 4 && randomNumber <=9;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder resultMessageBuilder = new StringBuilder();
+        resultMessageBuilder.append(this.name + ":");
+        for(int i=0; i<this.position; i++) {
+            resultMessageBuilder.append("-");
+        }
+        return resultMessageBuilder.toString();
+    }
 }
