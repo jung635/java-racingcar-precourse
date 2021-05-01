@@ -1,3 +1,5 @@
+package common.validatation;
+
 public class CarsValidator {
     public void isValidNameOfCarLength(String carName){
         if(carName.length() < 1 || carName.length() > 5) {

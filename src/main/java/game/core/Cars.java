@@ -1,3 +1,7 @@
+package game.core;
+
+import common.validatation.CarsValidator;
+
 public class Cars {
     CarsValidator carsValidator = new CarsValidator();
 

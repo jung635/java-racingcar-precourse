@@ -1,3 +1,6 @@
+package game.core;
+
+import game.core.RandomNumber;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
