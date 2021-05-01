@@ -27,7 +27,7 @@ public class CarsTest {
     void isValidNameOfCarLength_ShouldBe1to5_false(String inputCarName) {
         assertThatThrownBy(()->{
             new Cars(inputCarName);
-        }, "자동차 이름 길이는 1~5자만 허용한다.").isInstanceOf(RuntimeException.class).hasMessage("Length of name of car should be from 1 to 5.");
+        }, "자동차 이름 길이는 1~5자만 허용한다.").isInstanceOf(RuntimeException.class).hasMessage("Invalid input length: Name of cars should be from 1 to 5");
     }
 
     @ParameterizedTest
@@ -45,7 +45,7 @@ public class CarsTest {
     void isValidInputPostionOfCarRange_ShouldBe0to9_false(int inputPosition) {
         assertThatThrownBy(()->{
             new Cars("myCar").move(inputPosition);
-        }, "자동차 위치 입력 길이는 1~5자만 허용한다.").isInstanceOf(RuntimeException.class).hasMessage("Input of position of car should be from 0 to 9.");
+        }, "자동차 위치 입력 길이는 1~5자만 허용한다.").isInstanceOf(RuntimeException.class).hasMessage("Invalid input range: Position of cars should be from 0 to 9");
     }
 
     @ParameterizedTest

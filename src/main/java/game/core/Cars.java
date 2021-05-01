@@ -1,15 +1,18 @@
 package game.core;
 
-import common.validatation.CarsValidator;
+import common.validatation.Validator;
 
 public class Cars {
-    CarsValidator carsValidator = new CarsValidator();
+    Validator validator = new Validator();
 
     private String name;
     private int position;
 
+    final static int MAX_LENGTH_CAR_NAME = 1;
+    final static int MIN_LENGTH_CAR_NAME = 5;
+
     public Cars(String name) {
-        carsValidator.isValidNameOfCarLength(name);
+        validator.isValidLength("Name of cars", name, 1, 5);
 
         this.name = name;
         this.position = 0;
@@ -24,7 +27,7 @@ public class Cars {
     }
 
     public void move(int inputPostion){
-        carsValidator.isValidInputPostionRange(inputPostion);
+        validator.isValidRange("Position of cars", inputPostion, 0, 9);
         if(isForward(inputPostion)) {
             this.position ++;
         }
