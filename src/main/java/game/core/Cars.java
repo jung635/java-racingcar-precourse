@@ -23,9 +23,8 @@ public class Cars {
 
         for(Car car : this.carList) {
             car.move(new Random().nextInt(BOUND_RANDOM_NUMBER));
-            movingMessage.append(car);
+            movingMessage.append(car+"\n");
         }
-        movingMessage.append("\n");
 
         return movingMessage.toString();
     }
@@ -36,9 +35,8 @@ public class Cars {
         }
 
         String winnerMessage = String.join(",", getWinner());
-        System.out.print(winnerMessage + "가 최종 우승했습니다.");
 
-        return winnerMessage;
+        return winnerMessage + "가 최종 우승했습니다.";
     }
 
     private ArrayList<String> getWinner() {
