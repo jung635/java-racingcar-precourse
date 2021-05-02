@@ -1,5 +1,7 @@
 package game.core;
 
+import common.validatation.Validator;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -12,6 +14,8 @@ public class Cars {
     public Cars(String carNameInput) {
         this.carList = new ArrayList<Car>();
         String[] carNameInputArr = carNameInput.split(",");
+
+        Validator.isArrLengthNotEmpty("Array of name of cars", carNameInputArr);
 
         for (String carName : carNameInputArr) {
             carList.add(new Car(carName));
