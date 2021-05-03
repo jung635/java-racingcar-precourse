@@ -68,28 +68,36 @@ crong가 최종 우승했습니다.
 
 ## 디렉토리 구조
 ```
-└─src
-    ├─main
-    │  └─java
-    │      ├─common
-    │      │  └─code
-    │      │     └─ GameErrorCode.java  Game 공통 에러 코드
-    │      │
-    │      └─game
-    │          ├─app
-    │          │  └─ GameApp.java       Game input/output(application)
-    │          │
-    │          └─core
-    │             └─ Car.java           Car 객체 (name, position)
-    │                Cars.java          Cars 객체 (Cars)
-    │                GamePlayer.java    Game 실행
-    │
-    └─test
-        └─java
-            └─game
-                └─core
-                   └─ CarsTest.java
-                      CarTest.java
-                      GamePlayerTest.java
+─src
+  ├─main
+  │  └─java
+  │      ├─common
+  │      │  └─code
+  │      │      └─  GameErrorCode.java  Game 공통 에러 코드
+  │      │
+  │      └─game
+  │          ├─app
+  │          │  └─  GameApp.java        Game input/output(application)
+  │          │
+  │          ├─core
+  │          │  └─  Car.java            Car (CarName, position)
+  │          │  └─  Cars.java           Cars (CarList)
+  │          │  └─  GamePlayer.java     Game 실행
+  │          │
+  │          └─value
+  │             └─   CarList.java       자동차 객체 List
+  │             └─   CarName.java       자동차 이름
+  │             └─   TryCount.java      시도 횟수
+  │
+  └─test
+      └─java
+          └─game
+              └─core
+                 └─   CarListTest.java
+                 └─   CarNameTest.java
+                 └─   CarsTest.java
+                 └─   CarTest.java
+                 └─   GamePlayerTest.java
+                 └─   TryCountTest.java
 
 ```
