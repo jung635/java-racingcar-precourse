@@ -1,17 +1,21 @@
 package game.core;
 
-import common.validatation.Validator;
+import common.code.GameErrorCode;
 
 public class Car implements Comparable<Car> {
 
     private String name;
     private int position;
 
-    final static int MAX_LENGTH_CAR_NAME = 1;
-    final static int MIN_LENGTH_CAR_NAME = 5;
+    final static int MIN_LENGTH_CAR_NAME = 1;
+    final static int MAX_LENGTH_CAR_NAME = 5;
+    final static int MIN_MOVING_NUMBER = 0;
+    final static int MAX_MOVING_NUMBER = 9;
 
     public Car(String name) {
-        Validator.isValidStringLength("Name of cars", name, MAX_LENGTH_CAR_NAME, MIN_LENGTH_CAR_NAME);
+        if(name.length() < MIN_LENGTH_CAR_NAME || name.length() > MAX_LENGTH_CAR_NAME) {
+            throw new IllegalArgumentException(GameErrorCode.INVALID_LENGTH_OF_CAR_NAME.getErrorMessage());
+        }
 
         this.name = name;
         this.position = 0;
@@ -26,7 +30,9 @@ public class Car implements Comparable<Car> {
     }
 
     public void move(int movingNumber) {
-        Validator.isValidRange("Moving number", movingNumber, 0, 9);
+        if(movingNumber < MIN_MOVING_NUMBER || movingNumber > MAX_MOVING_NUMBER) {
+            throw new IllegalArgumentException(GameErrorCode.INVALID_RANGE_OF_MOVING_NUMBER.getErrorMessage());
+        }
 
         if(isForward(movingNumber)) {
             this.position ++;
