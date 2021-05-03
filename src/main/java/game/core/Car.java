@@ -7,10 +7,12 @@ public class Car implements Comparable<Car> {
     private String name;
     private int position;
 
-    final static int MIN_LENGTH_CAR_NAME = 1;
-    final static int MAX_LENGTH_CAR_NAME = 5;
-    final static int MIN_MOVING_NUMBER = 0;
-    final static int MAX_MOVING_NUMBER = 9;
+    private final static int MIN_LENGTH_CAR_NAME = 1;
+    private final static int MAX_LENGTH_CAR_NAME = 5;
+    private final static int MIN_MOVING_NUMBER = 0;
+    private final static int MAX_MOVING_NUMBER = 9;
+    private final static int MIN_MOVING_FORWARD = 4;
+    private final static int MAX_MOVING_FORWARD = 9;
 
     public Car(String name) {
         if(name.length() < MIN_LENGTH_CAR_NAME || name.length() > MAX_LENGTH_CAR_NAME) {
@@ -40,7 +42,7 @@ public class Car implements Comparable<Car> {
     }
 
     private boolean isForward(int movingNumber) {
-        return movingNumber >= 4 && movingNumber <=9;
+        return movingNumber >= MIN_MOVING_FORWARD && movingNumber <=MAX_MOVING_FORWARD;
     }
 
     @Override

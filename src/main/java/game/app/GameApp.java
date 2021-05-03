@@ -8,18 +8,19 @@ public class GameApp {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
         Scanner inputScanner = new Scanner(System.in);
+        GamePlayer gamePlayer = getGamePlayer(inputScanner);
+
+        System.out.println("시도할 회수는 몇회인가요?");
+        gamePlayer.playGame(getTryCount(inputScanner));
+    }
+
+    private static GamePlayer getGamePlayer(Scanner inputScanner) {
         GamePlayer gamePlayer = null;
         while(gamePlayer == null) {
             gamePlayer = startGame(inputScanner);
         }
 
-        System.out.println("시도할 회수는 몇회인가요?");
-        int tryCount = -1;
-        while(tryCount < 0) {
-            tryCount = inputTryCount(inputScanner);
-        }
-
-        gamePlayer.playGame(tryCount);
+        return gamePlayer;
     }
 
     private static GamePlayer startGame(Scanner inputScanner) {
@@ -29,6 +30,15 @@ public class GameApp {
             System.out.println(iae.getMessage());
             return null;
         }
+    }
+
+    private static int getTryCount(Scanner inputScanner) {
+        int tryCount = -1;
+        while(tryCount < 0) {
+            tryCount = inputTryCount(inputScanner);
+        }
+
+        return tryCount;
     }
 
     private static int inputTryCount(Scanner inputScanner) {

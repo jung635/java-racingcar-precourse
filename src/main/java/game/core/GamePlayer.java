@@ -3,12 +3,10 @@ package game.core;
 import common.code.GameErrorCode;
 
 public class GamePlayer {
-    final int MIN_TRY_COUNT = 1;
-
+    private final static int MIN_TRY_COUNT = 1;
     private final Cars cars;
 
     public GamePlayer(String carNameInput) {
-
         cars = new Cars(carNameInput);
     }
 
@@ -17,6 +15,7 @@ public class GamePlayer {
             throw new IllegalArgumentException(GameErrorCode.INVALID_RANGE_OF_TRY_COUNT.getErrorMessage());
         }
 
+        System.out.println(); //게임 시작 전 줄바꿈
         for(int i=0; i<tryCount; i++){
             System.out.println(cars.move());
         }
