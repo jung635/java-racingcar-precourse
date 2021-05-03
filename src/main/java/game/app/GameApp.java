@@ -1,6 +1,8 @@
 package game.app;
 
 import game.core.GamePlayer;
+import game.value.CarList;
+import game.value.TryCount;
 
 import java.util.Scanner;
 
@@ -11,7 +13,7 @@ public class GameApp {
         GamePlayer gamePlayer = getGamePlayer(inputScanner);
 
         System.out.println("시도할 회수는 몇회인가요?");
-        gamePlayer.playGame(getTryCount(inputScanner));
+        gamePlayer.playGame(new TryCount(getTryCount(inputScanner)));
     }
 
     private static GamePlayer getGamePlayer(Scanner inputScanner) {
@@ -25,7 +27,7 @@ public class GameApp {
 
     private static GamePlayer startGame(Scanner inputScanner) {
         try {
-            return new GamePlayer(inputScanner.nextLine());
+            return new GamePlayer(new CarList(inputScanner.nextLine()));
         }catch (IllegalArgumentException iae) {
             System.out.println(iae.getMessage());
             return null;

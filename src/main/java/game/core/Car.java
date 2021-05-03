@@ -1,30 +1,24 @@
 package game.core;
 
 import common.code.GameErrorCode;
+import game.value.CarName;
 
 public class Car implements Comparable<Car> {
-
-    private String name;
+    private CarName carName;
     private int position;
 
-    private final static int MIN_LENGTH_CAR_NAME = 1;
-    private final static int MAX_LENGTH_CAR_NAME = 5;
     private final static int MIN_MOVING_NUMBER = 0;
     private final static int MAX_MOVING_NUMBER = 9;
     private final static int MIN_MOVING_FORWARD = 4;
     private final static int MAX_MOVING_FORWARD = 9;
 
-    public Car(String name) {
-        if(name.length() < MIN_LENGTH_CAR_NAME || name.length() > MAX_LENGTH_CAR_NAME) {
-            throw new IllegalArgumentException(GameErrorCode.INVALID_LENGTH_OF_CAR_NAME.getErrorMessage());
-        }
-
-        this.name = name;
+    public Car(CarName carName) {
+        this.carName = carName;
         this.position = 0;
     }
 
-    public String getName() {
-        return name;
+    public CarName getCarName() {
+        return carName;
     }
 
     public int getPosition() {
@@ -48,7 +42,7 @@ public class Car implements Comparable<Car> {
     @Override
     public String toString() {
         StringBuilder resultMessageBuilder = new StringBuilder();
-        resultMessageBuilder.append(this.name + ":");
+        resultMessageBuilder.append(this.carName.getName() + ":");
         for(int i=0; i<this.position; i++) {
             resultMessageBuilder.append("-");
         }
