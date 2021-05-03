@@ -1,5 +1,6 @@
 package game.core;
 
+import common.code.GameErrorCode;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -10,20 +11,20 @@ import static org.assertj.core.api.Assertions.*;
 public class CarTest {
 
     @ParameterizedTest
-    @DisplayName("자동차 이름 입력 확인_성공")
-    @ValueSource(strings = {"a", "abc", "abcde"})
-    void isValidNameOfCarLength_ShouldBe1to5_true(String inputCarName) {
-        String carName = new Car(inputCarName).getName();
-        assertThat(carName.length() > 0 && carName.length() < 6).isTrue();
-    }
-
-    @ParameterizedTest
     @DisplayName("자동차 이름 입력 확인_실패")
     @ValueSource(strings = {"", "abcdef"})
     void isValidNameOfCarLength_ShouldBe1to5_false(String inputCarName) {
         assertThatThrownBy(()->{
             new Car(inputCarName);
-        }, "자동차 이름 길이는 1~5자만 허용한다.").isInstanceOf(RuntimeException.class).hasMessage("Invalid input length: Name of cars should be from 1 to 5");
+        }, "자동차 이름 길이는 1~5자만 허용한다.").isInstanceOf(IllegalArgumentException.class).hasMessage(GameErrorCode.INVALID_LENGTH_OF_CAR_NAME.getErrorMessage());
+    }
+
+    @ParameterizedTest
+    @DisplayName("자동차 이름 입력 확인_성공")
+    @ValueSource(strings = {"a", "abc", "abcde"})
+    void isValidNameOfCarLength_ShouldBe1to5_true(String inputCarName) {
+        String carName = new Car(inputCarName).getName();
+        assertThat(carName.length() > 0 && carName.length() < 6).isTrue();
     }
 
     @Test
@@ -45,10 +46,8 @@ public class CarTest {
     void isValidRangeOfMovingNumber_ShouldBe0to9_false(int movingNumber) {
         assertThatThrownBy(()->{
             new Car("myCar").move(movingNumber);
-        }, "자동차 이동 숫자는 0~9 사이로 생성되어야한다.").isInstanceOf(RuntimeException.class).hasMessage("Invalid input range: Moving number should be from 0 to 9");
+        }, "자동차 이름 길이는 1~5자만 허용한다.").isInstanceOf(IllegalArgumentException.class).hasMessage(GameErrorCode.INVALID_RANGE_OF_MOVING_NUMBER.getErrorMessage());
     }
-
-
 
     @ParameterizedTest
     @DisplayName("자동차 위치 계산_전진")

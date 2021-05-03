@@ -1,20 +1,22 @@
 package game.core;
 
-import common.validatation.Validator;
+import common.code.GameErrorCode;
 
 public class GamePlayer {
     final int MIN_TRY_COUNT = 1;
 
-    private int tryCount;
-    private Cars cars;
+    private final Cars cars;
 
-    public GamePlayer(int tryCount, String carNameInput) {
-        Validator.isValidMinRange("Count of try", tryCount, MIN_TRY_COUNT);
-        this.tryCount = tryCount;
+    public GamePlayer(String carNameInput) {
+
         cars = new Cars(carNameInput);
     }
 
-    public void plyaGame() {
+    public void playGame(int tryCount) {
+        if(tryCount < MIN_TRY_COUNT) {
+            throw new IllegalArgumentException(GameErrorCode.INVALID_RANGE_OF_TRY_COUNT.getErrorMessage());
+        }
+
         for(int i=0; i<tryCount; i++){
             System.out.println(cars.move());
         }
