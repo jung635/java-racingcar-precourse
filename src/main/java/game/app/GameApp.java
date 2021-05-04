@@ -6,6 +6,10 @@ import game.value.TryCount;
 
 import java.util.Scanner;
 
+/**
+ * @brief
+ * Game application
+ */
 public class GameApp {
     public static void main(String[] args) {
         System.out.println("경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)");
@@ -18,6 +22,7 @@ public class GameApp {
 
     private static GamePlayer getGamePlayer(Scanner inputScanner) {
         GamePlayer gamePlayer = null;
+        // IllegalArgumentException 오류 발생 시 다시 입력하게 한다.
         while(gamePlayer == null) {
             gamePlayer = startGame(inputScanner);
         }
@@ -36,6 +41,7 @@ public class GameApp {
 
     private static int getTryCount(Scanner inputScanner) {
         int tryCount = -1;
+        // 시도 횟수 입력값 오류 발생 시 다시 입력하게 한다.
         while(tryCount < 0) {
             tryCount = inputTryCount(inputScanner);
         }

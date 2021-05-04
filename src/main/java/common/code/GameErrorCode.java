@@ -1,5 +1,9 @@
 package common.code;
 
+/**
+ * @brief
+ * Game 공통 에러 코드
+ */
 public enum GameErrorCode {
     INVALID_LENGTH_OF_CAR_NAME("Length of a car name should be from 1 to 5."),
     INVALID_RANGE_OF_MOVING_NUMBER("Moving number should be from 0 to 9."),

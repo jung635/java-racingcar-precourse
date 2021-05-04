@@ -10,7 +10,6 @@ public class Car implements Comparable<Car> {
     private final static int MIN_MOVING_NUMBER = 0;
     private final static int MAX_MOVING_NUMBER = 9;
     private final static int MIN_MOVING_FORWARD = 4;
-    private final static int MAX_MOVING_FORWARD = 9;
 
     public Car(CarName carName) {
         this.carName = carName;
@@ -36,7 +35,7 @@ public class Car implements Comparable<Car> {
     }
 
     private boolean isForward(int movingNumber) {
-        return movingNumber >= MIN_MOVING_FORWARD && movingNumber <=MAX_MOVING_FORWARD;
+        return movingNumber >= MIN_MOVING_FORWARD;
     }
 
     @Override

@@ -9,7 +9,6 @@ import java.util.List;
 
 public class CarList {
     private List<Car> carList;
-    private static final int BOUND_RANDOM_NUMBER = 10;
     private static final String CAR_SPLIT_REGEX = ",";
     private static final int MINIMUM_NUMBER_OF_CARS = 2;
 
