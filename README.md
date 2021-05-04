@@ -38,8 +38,66 @@
 
 ## 게임 실행 예시
 ```
+경주할 자동차 이름을 입력하세요.(이름은 쉼표(,) 기준으로 구분)
+pobi,crong,honux
+시도할 회수는 몇회인가요?
+5
+
+pobi:-
+crong:-
+honux:
+
+pobi:--
+crong:--
+honux:-
+
+pobi:---
+crong:---
+honux:--
+
+pobi:----
+crong:----
+honux:--
+
+pobi:----
+crong:-----
+honux:---
+
+crong가 최종 우승했습니다.
 ```
 
 ## 디렉토리 구조
 ```
+─src
+  ├─main
+  │  └─java
+  │      ├─common
+  │      │  └─code
+  │      │      └─  GameErrorCode.java  Game 공통 에러 코드
+  │      │
+  │      └─game
+  │          ├─app
+  │          │  └─  GameApp.java        Game input/output(application)
+  │          │
+  │          ├─core
+  │          │  └─  Car.java            Car (CarName, position)
+  │          │  └─  Cars.java           Cars (CarList)
+  │          │  └─  GamePlayer.java     Game 실행
+  │          │
+  │          └─value
+  │             └─   CarList.java       자동차 객체 List
+  │             └─   CarName.java       자동차 이름
+  │             └─   TryCount.java      시도 횟수
+  │
+  └─test
+      └─java
+          └─game
+              └─core
+                 └─   CarListTest.java
+                 └─   CarNameTest.java
+                 └─   CarsTest.java
+                 └─   CarTest.java
+                 └─   GamePlayerTest.java
+                 └─   TryCountTest.java
+
 ```
